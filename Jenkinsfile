@@ -17,12 +17,12 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                echo 'Simulating build...'
-                sh 'echo "Build completed2"'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         echo 'Simulating build...'
+        //         sh 'echo "Build completed2"'
+        //     }
+        // }
 
         stage('Test') {
             steps {
