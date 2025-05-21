@@ -24,12 +24,12 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                sh 'echo "All tests passed!"'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         echo 'Running tests...'
+        //         sh 'echo "All tests passed!"'
+        //     }
+        // }
 
         stage('Deploy') {
             steps {
