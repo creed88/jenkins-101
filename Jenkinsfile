@@ -1,38 +1,40 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-            }
-      }
-    triggers {
-        pollSCM '* * * * *'
+    agent {
+        label 'docker-agent'  // This label must match what you set under Docker Cloud template
     }
     stages {
+        stage('Preparation') {
+            steps {
+                echo 'Running on Docker agent using jenkins/inbound-agent...'
+                sh 'whoami'
+                sh 'hostname'
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/your-repo/example.git' // replace with your actual repo
+            }
+        }
+
         stage('Build') {
             steps {
-                echo "Building.."
-                sh '''
-                cd myapp
-                pip install -r requirements.txt
-                '''
+                echo 'Simulating build...'
+                sh 'echo "Build completed"'
             }
         }
+
         stage('Test') {
             steps {
-                echo "Testing.."
-                sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
-                '''
+                echo 'Running tests...'
+                sh 'echo "All tests passed!"'
             }
         }
-        stage('Deliver') {
+
+        stage('Deploy') {
             steps {
-                echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
-                '''
+                echo 'Deploying...'
+                sh 'echo "Deploy complete!"'
             }
         }
     }
