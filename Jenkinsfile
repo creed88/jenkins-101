@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Simulating build...'
-                sh 'echo "Build completed"'
+                sh 'echo "Build completed2"'
             }
         }
 
